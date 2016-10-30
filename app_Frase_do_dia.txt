@@ -1,0 +1,50 @@
+public class MainActivity extends AppCompatActivity {
+
+	// mostra uma frase diferente ao clicar o botão
+	//utiliza array e função Random
+	
+	
+    private TextView txtNovaFrase;
+    private Button btnNovaFrase;
+
+	
+    private String[] frases = {
+            "Não sobrevive a espécie mais forte, mas a que se adapta à mudança.'Charles Darwin'",
+            "A imaginação é mais importante que o conhecimento.'Albert Einstein'",
+            "O mundo não está ameaçado pelas pessoas más, e sim por aquelas que permitem a maldade.'Albert Einstein'",
+            "Tudo deveria se tornar o mais simples possível, mas não simplificado.'Albert Einstein'",
+            "No meio da dificuldade encontra-se a oportunidade.'Albert Einstein'",
+            "Inteligência é a capacidade de se adaptar à mudança.'Stephen Hawking'",
+            "Há uma diferença fundamental entre a religião, que se baseia na autoridade; e a ciência, que se baseia na observação e na razão. A ciência vai ganhar porque ela funciona.'Stephen Hawking'",
+            "Quantas coisas perdemos por medo de perder.'Paulo Coelho'",
+            "Se você consegue sonhar algo, consegue realizá-lo!'Walt Disney'",
+            "Não deixe que os seus medos tomem o lugar dos seus sonhos.'Walt Disney'",
+            "Eu gosto do impossível porque lá a concorrência é menor.'Walt Disney'",
+
+    };
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        txtNovaFrase = (TextView) findViewById(R.id.txtNovaFraseId);
+        btnNovaFrase = (Button) findViewById(R.id.btnNovaFraseId);
+
+        btnNovaFrase.setText("Nova Frase");
+
+        //txtNovaFrase.setText(frases[0]);
+
+        btnNovaFrase.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+
+                Random randomico = new Random();
+                int numAleatorio = randomico.nextInt(frases.length);
+
+                txtNovaFrase.setText(frases[numAleatorio]);
+            }
+        });
+    }
+}
+
